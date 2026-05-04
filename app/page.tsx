@@ -16,10 +16,7 @@ export default function Home() {
   "Book Marketing",
 ];
 
-const filteredBooks =
-  selectedCategory === "All"
-    ? books
-    : books.filter((book) => book.category === selectedCategory);
+const filteredBooks = books;
 
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
