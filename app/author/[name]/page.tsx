@@ -3,7 +3,7 @@ import Link from "next/link";
 const books = [
   {
     id: 1,
-    title: "Scrum Master Book",
+    title: "51 Golf Tips",
     author: "Alexis Coates",
     image_url: "/IMG_1681.jpeg",
     summary: "A practical guide for Scrum Masters and Agile teams.",
