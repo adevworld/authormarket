@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 
-
 export default function Home() {
   const [books, setBooks] = useState<any[]>([]);
  const [selectedCategory, setSelectedCategory] = useState("All"); 
