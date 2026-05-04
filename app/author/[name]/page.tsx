@@ -134,7 +134,15 @@ console.log("AUTHOR BOOKS:", authorBooks);
   }}
 >
   {authorBooks.map((book) => (
-  <Link href={`/book/${book.id}`} key={book.id}>
+  <Link
+    href={`/book/${book.id}`}
+    key={book.id}
+    style={{
+      textDecoration: "none",
+      color: "inherit",
+      display: "block",
+    }}
+  >
     <div
       style={{
         display: "flex",
