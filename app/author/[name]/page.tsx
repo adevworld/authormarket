@@ -34,9 +34,11 @@ export default async function AuthorPage({
   const authorName = decodeURIComponent(name);
 
   const authorBooks = books.filter(
-    (book) =>
-      book.author.toLowerCase().trim() === authorName.toLowerCase().trim()
-  );
+  (book) =>
+    book.author.toLowerCase().trim() ===
+    authorName.toLowerCase().trim()
+);
+
 console.log("AUTHOR NAME:", authorName);
 console.log("AUTHOR BOOKS:", authorBooks);
   return (
@@ -133,13 +135,17 @@ console.log("AUTHOR BOOKS:", authorBooks);
     marginTop: 20,
   }}
 >
-  import Link from "next/link";
+  
 
 {authorBooks.map((book) => (
-  <a
+  <Link
     key={book.id}
     href={`/book/${book.id}`}
-    style={{ textDecoration: "none", color: "inherit" }}
+    style={{
+      textDecoration: "none",
+      color: "inherit",
+      display: "block",
+    }}
   >
     <div
       style={{
@@ -166,7 +172,7 @@ console.log("AUTHOR BOOKS:", authorBooks);
       <h3>{book.title}</h3>
       <p style={{ color: "#666" }}>{book.summary}</p>
     </div>
-  </a>
+  </Link>
 ))}
 </div>
     </div>
