@@ -136,7 +136,11 @@ console.log("AUTHOR BOOKS:", authorBooks);
   import Link from "next/link";
 
 {authorBooks.map((book) => (
-  <Link key={book.id} href={`/book/${book.id}`}>
+  <a
+    key={book.id}
+    href={`/book/${book.id}`}
+    style={{ textDecoration: "none", color: "inherit" }}
+  >
     <div
       style={{
         display: "flex",
@@ -160,12 +164,9 @@ console.log("AUTHOR BOOKS:", authorBooks);
       />
 
       <h3>{book.title}</h3>
-
-      <p style={{ color: "#666" }}>
-        {book.summary}
-      </p>
+      <p style={{ color: "#666" }}>{book.summary}</p>
     </div>
-  </Link>
+  </a>
 ))}
 </div>
     </div>
