@@ -137,7 +137,6 @@ console.log("AUTHOR BOOKS:", authorBooks);
 
 {authorBooks.map((book) => (
   <Link key={book.id} href={`/book/${book.id}`}>
-    
     <div
       style={{
         display: "flex",
@@ -161,9 +160,11 @@ console.log("AUTHOR BOOKS:", authorBooks);
       />
 
       <h3>{book.title}</h3>
-      <p style={{ color: "#666" }}>{book.summary}</p>
-    </div>
 
+      <p style={{ color: "#666" }}>
+        {book.summary}
+      </p>
+    </div>
   </Link>
 ))}
 </div>
