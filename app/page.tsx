@@ -1,5 +1,4 @@
 "use client";
-
 import { useEffect, useState } from "react";
 import Link from "next/link";
 
@@ -284,6 +283,7 @@ const [allBooks, setAllBooks] = useState<any[]>([]);
               gap: 24,
             }}
           >
+            <div
             {filteredBooks.slice(0, 6).map((book) => (
   <Link key={book.id} href={`/book/${book.id}`}>
     <div
@@ -317,46 +317,10 @@ const [allBooks, setAllBooks] = useState<any[]>([]);
     </div>
   </Link>
 ))}
-          </div>
-        )}
       </section>
 
       {/* AI TOOL */}
-      <section style={{ padding: "20px 40px" }}>
-  <h2 style={{ color: "#111827" }}>All Authors</h2>
-
-  <div
-    style={{
-      display: "grid",
-      gridTemplateColumns: "repeat(auto-fill, minmax(180px, 1fr))",
-      gap: 24,
-      marginTop: 10,
-    }}
-  >
-    {filteredBooks.slice(0, 12).map((book) => (
-  <Link key={book.id} href={`/book/${book.id}`}>
-    <div
-      style={{
-        background: "white",
-        padding: 12,
-        borderRadius: 10,
-        border: "1px solid #eee",
-        cursor: "pointer"
-      }}
-    >
-      {book.image_url && (
-        <img
-          src={book.image_url}
-          alt={book.title}
-          style={{
-            width: "100%",
-            height: 220,
-            objectFit: "contain"
-          }}
-        />
-      )}
-
-      <h4>{book.title}</h4>
+ 
       <p style={{ fontSize: 12, color: "#666" }}>
         by {book.author}
       </p>
