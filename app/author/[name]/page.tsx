@@ -10,7 +10,7 @@ const books = [
   },
   {
     id: 2,
-    title: "51 Golf Tips",
+    title: "Circel of Friends",
     author: "Alexis Coates",
     image_url: "/IMG_1682.jpeg",
     summary: "Simple golf tips to improve your game.",
