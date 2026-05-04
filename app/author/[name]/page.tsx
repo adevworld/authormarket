@@ -133,16 +133,11 @@ console.log("AUTHOR BOOKS:", authorBooks);
     marginTop: 20,
   }}
 >
-  {authorBooks.map((book) => (
-  <Link
-    href={`/book/${book.id}`}
-    key={book.id}
-    style={{
-      textDecoration: "none",
-      color: "inherit",
-      display: "block",
-    }}
-  >
+  import Link from "next/link";
+
+{authorBooks.map((book) => (
+  <Link key={book.id} href={`/book/${book.id}`}>
+    
     <div
       style={{
         display: "flex",
@@ -168,6 +163,7 @@ console.log("AUTHOR BOOKS:", authorBooks);
       <h3>{book.title}</h3>
       <p style={{ color: "#666" }}>{book.summary}</p>
     </div>
+
   </Link>
 ))}
 </div>
