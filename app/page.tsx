@@ -339,12 +339,11 @@ const [allBooks, setAllBooks] = useState<any[]>([]);
   <Link key={book.id} href={`/book/${book.id}`}>
     <div
       style={{
-        cursor: "pointer",
         background: "white",
-        padding: 18,
-        borderRadius: 12,
-        boxShadow: "0 8px 20px rgba(0,0,0,0.08)",
+        padding: 12,
+        borderRadius: 10,
         border: "1px solid #eee",
+        cursor: "pointer"
       }}
     >
       {book.image_url && (
@@ -354,19 +353,15 @@ const [allBooks, setAllBooks] = useState<any[]>([]);
           style={{
             width: "100%",
             height: 220,
-            objectFit: "contain",
-            background: "#f9fafb",
-            borderRadius: 8,
-            marginBottom: 12,
+            objectFit: "contain"
           }}
         />
       )}
 
-      <h3>{book.title}</h3>
+      <h4>{book.title}</h4>
       <p style={{ fontSize: 12, color: "#666" }}>
         by {book.author}
       </p>
-      <p>{book.summary}</p>
     </div>
   </Link>
 ))}
