@@ -365,7 +365,7 @@ const [allBooks, setAllBooks] = useState<any[]>([]);
     </div>
   </Link>
 ))}
-  </div>
+  
 </section>
       <section
         style={{
