@@ -1,7 +1,7 @@
+import Link from "next/link";
 "use client";
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
 
 export default function Home() {
   const [books, setBooks] = useState<any[]>([]);
@@ -205,13 +205,11 @@ const [allBooks, setAllBooks] = useState<any[]>([]);
           <h3 style={{ fontSize: 22 }}>{book.title}</h3>
           <p style={{ color: "#9ca3af" }}>by {book.author}</p>
 
-          {book.buy_link && (
-            <a href={book.buy_link} target="_blank">
-              <button style={{ marginTop: 10 }}>
-                Buy Book
-              </button>
-            </a>
-          )}
+          <Link href={`/book/${book.id}`}>
+  <button style={{ marginTop: 10 }}>
+    Buy Book
+  </button>
+</Link>
         </div>
       </div>
     ))}
@@ -289,87 +287,38 @@ const [allBooks, setAllBooks] = useState<any[]>([]);
             }}
           >
             {filteredBooks.slice(0, 6).map((book) => (
-              <div
-                key={book.id}
-                style={{
-                  background: "white",
-                  padding: 18,
-                  borderRadius: 12,
-                  boxShadow: "0 8px 20px rgba(0,0,0,0.08)",
-                  border: "1px solid #e5e7eb",
-                }}
-              >
-                {book.image_url && (
-                  <img
-                    src={book.image_url}
-                    alt={book.title}
-                    style={{
-                      width: "100%",
-                      height: 260,
-                      objectFit: "contain",
-                      background: "#f9fafb",
-                      borderRadius: 8,
-                      marginBottom: 12,
-                      padding: 8,
-                    }}
-                  />
-                )}
-
-                <span
-                  style={{
-                    background: "#22c55e",
-                    color: "black",
-                    fontSize: 12,
-                    fontWeight: "bold",
-                    padding: "4px 8px",
-                    borderRadius: 999,
-                  }}
-                >
-                  Featured
-                </span>
-
-                <h3 style={{ marginBottom: 4 }}>{book.title}</h3>
-                <p style={{ color: "#6b7280", marginTop: 0 }}>by {book.author}</p>
-                
-                {book.buy_link && (
-  <a href={book.buy_link} target="_blank" rel="noopener noreferrer">
-    <button
+  <Link key={book.id} href={`/book/${book.id}`}>
+    <div
       style={{
-        marginTop: 10,
-        background: "#22c55e",
-        color: "black",
-        border: "none",
-        padding: "10px 12px",
-        borderRadius: 6,
         cursor: "pointer",
-        width: "100%",
-        fontWeight: "bold",
+        background: "white",
+        padding: 18,
+        borderRadius: 12,
+        boxShadow: "0 8px 20px rgba(0,0,0,0.08)",
+        border: "1px solid #e5e7eb",
       }}
     >
-      Buy Book
-    </button>
-  </a>
-)}
-{book.author_link && (
-<Link href={`/author/${encodeURIComponent(book.author)}`}>
-  <button
-    style={{
-      marginTop: 8,
-      background: "#111827",
-      color: "white",
-      border: "none",
-      padding: "10px 12px",
-      borderRadius: 6,
-      cursor: "pointer",
-      width: "100%",
-    }}
-  >
-    Visit Author
-  </button>
-</Link>  
-)}
-              </div>
-            ))}
+      {book.image_url && (
+        <img
+          src={book.image_url}
+          alt={book.title}
+          style={{
+            width: "100%",
+            height: 260,
+            objectFit: "contain",
+            background: "#f9fafb",
+            borderRadius: 8,
+            marginBottom: 12,
+            padding: 8,
+          }}
+        />
+      )}
+
+      <h3>{book.title}</h3>
+      <p>{book.summary}</p>
+    </div>
+  </Link>
+))}
           </div>
         )}
       </section>
@@ -387,44 +336,40 @@ const [allBooks, setAllBooks] = useState<any[]>([]);
     }}
   >
     {filteredBooks.slice(0, 12).map((book) => (
-        <div
-          key={book.id}
+  <Link key={book.id} href={`/book/${book.id}`}>
+    <div
+      style={{
+        cursor: "pointer",
+        background: "white",
+        padding: 18,
+        borderRadius: 12,
+        boxShadow: "0 8px 20px rgba(0,0,0,0.08)",
+        border: "1px solid #eee",
+      }}
+    >
+      {book.image_url && (
+        <img
+          src={book.image_url}
+          alt={book.title}
           style={{
-            background: "white",
-            padding: 12,
-            borderRadius: 10,
-            border: "1px solid #eee",
+            width: "100%",
+            height: 220,
+            objectFit: "contain",
+            background: "#f9fafb",
+            borderRadius: 8,
+            marginBottom: 12,
           }}
-        >
-          <div
-  style={{
-    width: "100%",
-    height: 220,
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    background: "#f9fafb",
-    borderRadius: 8,
-    overflow: "hidden",
-  }}
->
-  <img
-    src={book.image_url}
-    alt={book.title}
-    style={{
-      maxWidth: "100%",
-      maxHeight: "100%",
-      objectFit: "contain",
-    }}
-  />
-</div>
+        />
+      )}
 
-          <h4>{book.title}</h4>
-          <p style={{ fontSize: 12, color: "#666" }}>
-            by {book.author}
-          </p>
-        </div>
-      ))}
+      <h3>{book.title}</h3>
+      <p style={{ fontSize: 12, color: "#666" }}>
+        by {book.author}
+      </p>
+      <p>{book.summary}</p>
+    </div>
+  </Link>
+))}
   </div>
 </section>
       <section
