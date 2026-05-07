@@ -51,14 +51,16 @@ function PackageCard({
   title,
   price,
   features,
-  link,
   featured = false,
+  buttonText,
+  buttonLink,
 }: {
   title: string;
   price: string;
   features: string[];
-  link: string;
   featured?: boolean;
+  buttonText: string;
+  buttonLink: string;
 }) {
   return (
     <div
