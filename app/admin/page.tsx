@@ -13,14 +13,14 @@ export default function AdminPage() {
     const formData = new FormData(form);
 
     const imageFile = formData.get("image_file") as File;
-
+const authorImageFile = formData.get("author_image_file") as File;
     let imageUrl = "";
 
     if (imageFile && imageFile.size > 0) {
       const fileName = `${Date.now()}-${imageFile.name}`;
 
       const { error: uploadError } = await supabase.storage
-        .from("book-covers")
+        .from("authors")
         .upload(fileName, imageFile);
 
       if (uploadError) {
@@ -29,14 +29,36 @@ export default function AdminPage() {
       }
 
       const { data } = supabase.storage
-        .from("book-covers")
+        .from("authors")
         .getPublicUrl(fileName);
 
       imageUrl = data.publicUrl;
+      let authorImageUrl = "";
+
+if (authorImageFile && authorImageFile.size > 0) {
+const authorFileName = `${Date.now()}-${authorImageFile.name}`;
+
+const { error: authorUploadError } = await supabase.storage
+.from("authors")
+.upload(authorFileName, authorImageFile);
+
+if (authorUploadError) {
+setMessage("❌ Author image upload failed: " + authorUploadError.message);
+return;
+}
+
+const { data: authorData } = supabase.storage
+.from("authors")
+.getPublicUrl(authorFileName);
+
+authorImageUrl = authorData.publicUrl;
+}
     }
 
     formData.delete("image_file");
     formData.append("image_url", imageUrl);
+formData.append("author_image_url", authorImageUrl);
+
 
     const res = await fetch("/api/books", {
       method: "POST",
@@ -63,6 +85,15 @@ export default function AdminPage() {
         <textarea name="summary" placeholder="Book Summary" required />
 
         <input type="file" name="image_file" accept="image/*" required />
+
+        <label>Author Headshot</label>
+
+<input
+type="file"
+name="author_image_file"
+accept="image/*"
+/>
+
 
         <input name="buy_link" placeholder="Amazon or Buy Link" />
         <input name="author_link" placeholder="Author Website" />

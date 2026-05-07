@@ -52,7 +52,7 @@ const { data: authorBooks } = await supabase
           }}
         >
           <img
-            src={`/${authorName.toLowerCase().replaceAll(" ", "-")}.jpg`}
+            src={authorBooks?.[0]?.author_image_url || "/founder.jpg"}
             alt={authorName}
             style={{
               width: 120,
