@@ -85,6 +85,28 @@ function PackageCard({
         {features.map((feature) => (
           <p key={feature}>{feature}</p>
         ))}
+
+       <a
+  href={buttonLink}
+  target="_blank"
+  style={{ textDecoration: "none" }}
+>
+  <button
+    style={{
+      marginTop: 15,
+      background: featured ? "#111827" : "#facc15",
+      color: featured ? "white" : "#111",
+      border: "none",
+      padding: "10px 16px",
+      borderRadius: 8,
+      fontWeight: "bold",
+      cursor: "pointer",
+      width: "100%",
+    }}
+  >
+    {buttonText}
+  </button>
+</a> 
       </div>
 
       <a
