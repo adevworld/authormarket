@@ -137,6 +137,53 @@ export default async function Home() {
         fontFamily: "Arial",
       }}
     >
+     <div
+  style={{
+    background: "#0f172a",
+    color: "white",
+    padding: "14px 24px",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    borderRadius: 12,
+    marginBottom: 30,
+  }}
+>
+  <div
+    style={{
+      fontSize: 28,
+      fontWeight: "bold",
+      color: "#facc15",
+    }}
+  >
+    Author Market
+  </div>
+
+  <input
+    type="text"
+    placeholder="Search books, authors, topics..."
+    style={{
+      width: "50%",
+      padding: "12px 16px",
+      borderRadius: 8,
+      border: "none",
+      fontSize: 16,
+    }}
+  />
+
+  <div
+    style={{
+      display: "flex",
+      gap: 20,
+      fontWeight: "bold",
+      fontSize: 14,
+    }}
+  >
+    <span>Books</span>
+    <span>Authors</span>
+    <span>Promote</span>
+  </div>
+</div> 
       <div
         style={{
           background: "#111827",
