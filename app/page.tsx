@@ -201,7 +201,8 @@ export default async function Home() {
           <PackageCard
   title="Launch"
   price="$49"
-  link="https://buy.stripe.com/4gM9AT3S7bQN44Rb50bV600"
+  buttonText="Get Started"
+  buttonLink="https://buy.stripe.com/4gM9AT3S7bQN44Rb50bV600"
   features={[
     "Author profile page",
     "1 featured book",
@@ -214,8 +215,8 @@ export default async function Home() {
           <PackageCard
   title="Authority"
   price="$99"
-  link="https://buy.stripe.com/9B64gz3S7aMJ7h32yubV601
-"
+  buttonText="Get Started"
+  buttonLink="https://buy.stripe.com/9B64gz3S7aMJ7h32yubV601"
   featured
   features={[
     "Featured homepage placement",
@@ -229,7 +230,8 @@ export default async function Home() {
           <PackageCard
   title="Legacy"
   price="$299"
-  link="https://buy.stripe.com/6oU9ATgET5sp0SF7SObV602"
+  buttonText="Get Started"
+  buttonLink="https://buy.stripe.com/6oU9ATgET5sp0SF7SObV602"
   features={[
     "BlackBusinessReview spotlight",
     "Homepage banner feature",
