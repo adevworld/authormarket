@@ -1,35 +1,38 @@
+import { NextResponse } from "next/server";
 import Stripe from "stripe";
+
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
 export async function POST(req: Request) {
   try {
-    const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
-
-    const { price } = await req.json();
+    const body = await req.json();
 
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
-      mode: "payment",
       line_items: [
         {
           price_data: {
             currency: "usd",
             product_data: {
-              name: "Author Market Listing",
+              name: body.title || "Book",
             },
-            unit_amount: price,
+            unit_amount: Math.round(Number(body.price || 9.99) * 100),
           },
           quantity: 1,
         },
       ],
+      mode: "payment",
       success_url: "http://localhost:3000/success",
       cancel_url: "http://localhost:3000",
     });
 
-    return Response.json({ url: session.url });
+    return NextResponse.json({ url: session.url });
   } catch (err: any) {
-    return Response.json({
-      success: false,
-      error: err.message || "Checkout error",
-    });
+    console.log(err);
+
+    return NextResponse.json(
+      { error: err.message || "Stripe checkout failed" },
+      { status: 500 }
+    );
   }
 }

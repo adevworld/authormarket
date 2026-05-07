@@ -1,112 +1,45 @@
-"use client";
-
-import { useState } from "react";
-
 export default function SuccessPage() {
-  const [submitted, setSubmitted] = useState(false);
-  const [imagePreview, setImagePreview] = useState<string | null>(null);
-
- const handleSubmit = async (e: any) => {
-  e.preventDefault();
-
-  const formData = new FormData(e.target);
-
-  const res = await fetch("/api/books", {
-    method: "POST",
-    body: formData,
-  });
-
-  const text = await res.text();
-  console.log("Raw submit response:", text);
-
-  if (!res.ok) {
-    alert("Submission failed. Check PowerShell.");
-    return;
-  }
-
-  let data;
-
-  try {
-    data = JSON.parse(text);
-  } catch {
-    alert("Server did not return JSON. Check PowerShell.");
-    return;
-  }
-
-  console.log("Submit response:", data);
-
-  if (data.success) {
-    setSubmitted(true);
-    alert("Book submitted!");
-  } else {
-    alert("Submission failed: " + data.error);
-  }
-};
-
-  const handleImage = (e: any) => {
-    const file = e.target.files[0];
-
-    if (file) {
-      setImagePreview(URL.createObjectURL(file));
-    }
-  };
-
   return (
-    <main style={{ padding: 40, fontFamily: "Arial" }}>
-      <h1>Payment Successful 🎉</h1>
-      <p>Submit your book to get featured:</p>
+    <main
+      style={{
+        minHeight: "100vh",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        background: "#f3f4f6",
+      }}
+    >
+      <div
+        style={{
+          background: "white",
+          padding: 40,
+          borderRadius: 12,
+          textAlign: "center",
+          boxShadow: "0 10px 30px rgba(0,0,0,0.1)",
+        }}
+      >
+        <h1>Payment Successful ✅</h1>
 
-      {!submitted ? (
-        <form onSubmit={handleSubmit}>
-          <input name="title" placeholder="Book Title" required />
-          <br />
-          <br />
+        <p style={{ marginTop: 10 }}>
+          Thank you for supporting independent authors.
+        </p>
 
-          <input name="author" placeholder="Author Name" required />
-          <br />
-          <br />
-
-          <textarea
-          
-  name="summary"
-  placeholder="Book Summary (140 characters max)"
-  required
-  maxLength={140}
-  style={{ width: 300, height: 100 }}
-/><input
-  name="buy_link"
-  placeholder="Buy Link (Amazon, etc)"
-  style={{ width: "100%", padding: 12, marginBottom: 10 }}
-/>
-
-<input
-  name="author_link"
-  placeholder="Author Website"
-  style={{ width: "100%", padding: 12, marginBottom: 10 }}
-/>
-          <br />
-          <br />
-
-          <input type="file" name="image" accept="image/*" onChange={handleImage} />
-          <br />
-          <br />
-
-          {imagePreview && (
-            <img
-              src={imagePreview}
-              alt="Book cover preview"
-              style={{ width: 200 }}
-            />
-          )}
-
-          <br />
-          <br />
-
-          <button type="submit">Submit Book</button>
-        </form>
-      ) : (
-        <h2>✅ Book Submitted!</h2>
-      )}
+        <a
+          href="/"
+          style={{
+            display: "inline-block",
+            marginTop: 20,
+            padding: "12px 20px",
+            background: "#111827",
+            color: "white",
+            textDecoration: "none",
+            borderRadius: 8,
+            fontWeight: 600,
+          }}
+        >
+          Back to Store
+        </a>
+      </div>
     </main>
   );
 }

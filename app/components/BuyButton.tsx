@@ -1,19 +1,46 @@
 "use client";
 
-export default function BuyButton({ title }: { title: string }) {
+export default function BuyButton({
+  title,
+  price,
+}: {
+  title: string;
+  price: number;
+}) {
+  const handleCheckout = async () => {
+    const res = await fetch("/api/checkout", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        title,
+        price,
+      }),
+    });
+
+    const data = await res.json();
+
+    if (data.url) {
+      window.location.href = data.url;
+    } else {
+      alert("Checkout failed");
+    }
+  };
+
   return (
     <button
+      onClick={handleCheckout}
       style={{
-        marginTop: 20,
-        padding: "12px 20px",
-        background: "black",
-        color: "white",
+        marginTop: 10,
+        width: "100%",
+        background: "#facc15",
         border: "none",
-        borderRadius: 6,
+        padding: "10px 12px",
+        borderRadius: 8,
+        fontWeight: 600,
         cursor: "pointer",
-        fontSize: 16,
       }}
-      onClick={() => alert(`Buying ${title}`)}
     >
       Buy Now
     </button>
