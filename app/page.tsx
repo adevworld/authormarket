@@ -74,6 +74,8 @@ function PackageCard({
         flexDirection: "column",
         justifyContent: "space-between",
         transform: featured ? "scale(1.05)" : "none",
+        minHeight: 420,
+alignItems: "stretch",
       }}
     >
       <div>
