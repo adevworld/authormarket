@@ -76,6 +76,7 @@ function PackageCard({
         transform: featured ? "scale(1.05)" : "none",
         minHeight: 450,
 alignItems: "stretch",
+lineHeight: 1.8,
       }}
     >
       <div>
@@ -145,9 +146,28 @@ export default async function Home() {
           marginBottom: 40,
         }}
       >
-        <h1>Author Market</h1>
-        <p>Discover books from independent authors, entrepreneurs, and creators.</p>
-        <p style={{ color: "#d1d5db" }}>Search books...</p>
+        <h1 style={{
+  fontSize: 42,
+  lineHeight: 1.05,
+  marginBottom: 16,
+  fontWeight: "bold"
+}}>
+  Get Your Book Discovered
+</h1>
+        <p style={{
+  fontSize: 20,
+  lineHeight: 1.45,
+  color: "#e5e7eb",
+  maxWidth: 700
+}}>
+  Promote your book, build your author brand, and get featured in front of readers, entrepreneurs, and media audiences.
+</p><p style={{
+  marginTop: 18,
+  color: "#facc15",
+  fontWeight: "bold"
+}}>
+  Powered by Author Market 
+</p>
       </div>
 
       <h2>Featured Books</h2>
@@ -189,9 +209,28 @@ export default async function Home() {
           color: "white",
         }}
       >
-        <h2 style={{ textAlign: "center", fontSize: 32, marginBottom: 10 }}>
-          Author Marketing Packages
-        </h2>
+
+               <h2
+  style={{
+    fontSize: 42,
+    fontWeight: "bold",
+    marginBottom: 10,
+    textAlign: "center",
+    color: "white",
+  }}
+>
+  Promote Your Book to Thousands of Readers
+</h2>
+
+<h3
+  style={{
+    textAlign: "center",
+    color: "#d1d5db",
+    marginBottom: 30,
+  }}
+>
+  Author Marketing Packages
+</h3>
 
         <p style={{ textAlign: "center", color: "#d1d5db", marginBottom: 40 }}>
           Grow your brand. Sell more books. Build your audience.
