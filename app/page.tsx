@@ -46,10 +46,8 @@ export default function Home() {
           width: 180,
         }}
       >
-        <Link
-          href={`/book/${book.id}`}
-          style={{ textDecoration: "none", color: "inherit" }}
-        >
+        
+      
           {book.image_url && (
             <img
               src={book.image_url}
@@ -79,7 +77,7 @@ export default function Home() {
           <p style={{ fontWeight: "bold", color: "#111" }}>
             ${book.price || "9.99"}
           </p>
-        </Link>
+        
 
         <BuyButton
           title={book.title}
