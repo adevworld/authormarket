@@ -1,28 +1,5 @@
+import { supabase } from "@/app/lib/supabase";
 import Link from "next/link";
-
-const books = [
-  {
-    id: 1,
-    title: "51 Golf Tips",
-    author: "Alexis Coates",
-    image_url: "/IMG_1681.jpeg",
-    summary: "A golfer tip hand book.",
-  },
-  {
-    id: 2,
-    title: "Circel of Friends",
-    author: "Alexis Coates",
-    image_url: "/IMG_1682.jpeg",
-    summary: "Friends in a Cirlce",
-  },
-  {
-    id: 3,
-    title: "51 Agile Ideas",
-    author: "Alexis Coates",
-    image_url: "/IMG_1683.jpeg",
-    summary: "Proven Agile ideas for project success.",
-  },
-];
 
 export default async function AuthorPage({
   params,
@@ -32,150 +9,203 @@ export default async function AuthorPage({
   const { name } = await params;
 
   const authorName = decodeURIComponent(name);
-
-  const authorBooks = books.filter(
-  (book) =>
-    book.author.toLowerCase().trim() ===
-    authorName.toLowerCase().trim()
-);
-
-console.log("AUTHOR NAME:", authorName);
-console.log("AUTHOR BOOKS:", authorBooks);
+const { data: authorBooks } = await supabase
+  .from("books")
+  .select("*")
+  .ilike("author", authorName);
   return (
     <main
+      style={{
+        padding: "40px 20px",
+        background: "#f3f4f6",
+        minHeight: "100vh",
+        fontFamily: "Arial",
+      }}
+    >
+      <div
+        style={{
+          maxWidth: 1100,
+          margin: "0 auto",
+        }}
+      >
+        <Link
+          href="/"
+          style={{
+            color: "#2563eb",
+            textDecoration: "none",
+            fontWeight: "bold",
+          }}
+        >
+          ← Back to Home
+        </Link>
+
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: 20,
+            marginTop: 30,
+            background: "white",
+            padding: 25,
+            borderRadius: 16,
+            boxShadow: "0 4px 12px rgba(0,0,0,0.08)",
+          }}
+        >
+          <img
+            src={`/${authorName.toLowerCase().replaceAll(" ", "-")}.jpg`}
+            alt={authorName}
+            style={{
+              width: 120,
+              height: 120,
+              borderRadius: "50%",
+              objectFit: "cover",
+              border: "4px solid #facc15",
+            }}
+          />
+
+          <div>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: 10,
+              }}
+            >
+              <h1 style={{ margin: 0 }}>
+                {authorName}
+              </h1>
+
+              <span
+                style={{
+                  background: "#facc15",
+                  color: "#111827",
+                  padding: "5px 10px",
+                  borderRadius: 20,
+                  fontSize: 12,
+                  fontWeight: "bold",
+                }}
+              >
+                Featured Author
+              </span>
+            </div>
+
+            <p
+              style={{
+                color: "#666",
+                marginTop: 8,
+              }}
+            >
+              Author • Entrepreneur • Thought Leader
+            </p>
+
+            <p
+              style={{
+                marginTop: 15,
+                maxWidth: 600,
+                lineHeight: 1.6,
+              }}
+            >
+              {authorName} is an author focused on business,
+              growth, leadership, and strategy.
+            </p>
+
+            <div
+              style={{
+                display: "flex",
+                gap: 15,
+                marginTop: 15,
+              }}
+            >
+              <a
+                href="#"
+                style={{
+                  color: "#2563eb",
+                  textDecoration: "none",
+                }}
+              >
+                Website
+              </a>
+
+              <a
+                href="#"
+                style={{
+                  color: "#2563eb",
+                  textDecoration: "none",
+                }}
+              >
+                LinkedIn
+              </a>
+
+              <a
+                href="#"
+                style={{
+                  color: "#2563eb",
+                  textDecoration: "none",
+                }}
+              >
+                Instagram
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <h2
+                  style={{
+            marginTop: 40,
+            marginBottom: 20,
+          }}
+        >
+          Books by {authorName}
+        </h2>
+        <div
   style={{
-    padding: "40px 20px",
-    background: "#f3f4f6",
-    minHeight: "100vh",
-  }}
->
-  <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-      <Link href="/" style={{ color: "#2563eb" }}>
-        ← Back to Home
-      </Link>
-
-      <div style={{ display: "flex", alignItems: "center", gap: 20, marginTop: 24 }}>
-  <img
-    src="/founder.jpg"
-    alt={authorName}
-    style={{
-      width: 120,
-      height: 120,
-      borderRadius: "50%",
-      objectFit: "cover",
-      border: "3px solid #facc15",
-    }}
-  />
-
-  <div>
-    <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-  <h1 style={{ margin: 0 }}>{authorName}</h1>
-
-  <span
-    style={{
-      background: "#facc15",
-      color: "#111827",
-      padding: "5px 10px",
-      borderRadius: 20,
-      fontSize: 12,
-      fontWeight: "bold",
-    }}
-  >
-    ⭐ Featured Author
-  </span>
-</div>
-    <p style={{ color: "#666", marginTop: 6 }}>
-      Author • Entrepreneur • Thought Leader
-    </p>
-  </div>
-</div> 
-<p style={{ marginTop: 20, maxWidth: 600, lineHeight: 1.6 }}>
-  {authorName} is an author focused on business, growth, and strategy.
-  Their work helps readers think differently and take action.
-</p>
-<div style={{ marginTop: 15, display: "flex", gap: 15 }}>
-  <a
-    href="https://yourwebsite.com"
-    target="_blank"
-    style={{ color: "#2563eb", fontWeight: 500 }}
-  >
-    🌐 Website
-  </a>
-
-  <a
-    href="https://linkedin.com"
-    target="_blank"
-    style={{ color: "#2563eb", fontWeight: 500 }}
-  >
-    💼 LinkedIn
-  </a>
-
-  <a
-    href="https://instagram.com"
-    target="_blank"
-    style={{ color: "#2563eb", fontWeight: 500 }}
-  >
-    📸 Instagram
-  </a>
-</div>
-      <p style={{ color: "#666" }}>
-        Author profile and book collection.
-      </p>
-
-      <h2 style={{ marginTop: 30 }}>Books by {authorName}</h2>
-<h2 style={{ marginTop: 30 }}>
-  Books by {authorName}
-</h2>
-
-<div
-  style={{
-    display: "grid",
-    gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))",
-    gap: 24,
+    display: "flex",
+    flexWrap: "wrap",
+    gap: 20,
     marginTop: 20,
   }}
 >
-  
-
-{authorBooks.map((book) => (
-  <Link
-    key={book.id}
-    href={`/book/${book.id}`}
-    style={{
-      textDecoration: "none",
-      color: "inherit",
-      display: "block",
-    }}
-  >
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-        background: "#f9fafb",
-        borderRadius: 8,
-        padding: 12,
-        cursor: "pointer",
-      }}
+  {authorBooks?.map((book) => (
+    <Link
+      key={book.id}
+      href={`/book/${book.id}`}
+      style={{ textDecoration: "none", color: "inherit" }}
     >
-      <img
-        src={book.image_url}
-        alt={book.title}
+      <div
         style={{
-          width: "100%",
-          height: 220,
-          objectFit: "contain",
+          width: 180,
+          background: "white",
+          border: "1px solid #e5e7eb",
+          borderRadius: 12,
+          padding: 14,
+          boxShadow: "0 4px 12px rgba(0,0,0,0.08)",
         }}
-      />
+      >
+        {book.image_url && (
+          <img
+            src={book.image_url}
+            alt={book.title}
+            style={{
+              width: "100%",
+              height: 220,
+              objectFit: "contain",
+              marginBottom: 10,
+            }}
+          />
+        )}
 
-      <h3>{book.title}</h3>
-      <p style={{ color: "#666" }}>{book.summary}</p>
-    </div>
-  </Link>
-))}
+        <h3 style={{ fontSize: 15 }}>
+          {book.title}
+        </h3>
+
+        <p style={{ fontWeight: "bold" }}>
+          ${book.price || "9.99"}
+        </p>
+      </div>
+    </Link>
+  ))}
 </div>
-    </div>
-  </main>
-);
+      </div>
+    </main>
+  );
 }

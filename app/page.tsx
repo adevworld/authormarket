@@ -65,7 +65,16 @@ export default function Home() {
 
           <h3 style={{ fontSize: 16 }}>{book.title}</h3>
 
-          <p style={{ fontSize: 13, color: "#555" }}>{book.author}</p>
+          <Link
+  href={`/author/${encodeURIComponent(book.author)}`}
+  style={{
+    fontSize: 13,
+    color: "#2563eb",
+    textDecoration: "none",
+  }}
+>
+  {book.author}
+</Link>
 
           <p style={{ fontWeight: "bold", color: "#111" }}>
             ${book.price || "9.99"}
@@ -145,6 +154,89 @@ export default function Home() {
           <BookCard key={book.id} book={book} />
         ))}
       </div>
+      <div
+  style={{
+    marginTop: 80,
+    padding: "40px 20px",
+    background: "#111827",
+    borderRadius: 20,
+    color: "white",
+  }}
+>
+  <h2
+    style={{
+      textAlign: "center",
+      fontSize: 32,
+      marginBottom: 10,
+    }}
+  >
+    Author Marketing Packages
+  </h2>
+
+  <p
+    style={{
+      textAlign: "center",
+      color: "#d1d5db",
+      marginBottom: 40,
+    }}
+  >
+    Grow your brand. Sell more books. Build your audience.
+  </p>
+
+  <div
+    style={{
+      display: "flex",
+      gap: 20,
+      flexWrap: "wrap",
+      justifyContent: "center",
+    }}
+  >
+
+    <div style={{
+      background: "white",
+      color: "#111",
+      padding: 30,
+      borderRadius: 16,
+      width: 280,
+    }}>
+      <h3>Starter</h3>
+      <h1>$49</h1>
+      <p>Basic author profile</p>
+      <p>1 featured book</p>
+      <p>Social links</p>
+    </div>
+
+    <div style={{
+      background: "#facc15",
+      color: "#111",
+      padding: 30,
+      borderRadius: 16,
+      width: 280,
+      transform: "scale(1.05)",
+    }}>
+      <h3>Professional</h3>
+      <h1>$99</h1>
+      <p>Featured homepage placement</p>
+      <p>Unlimited books</p>
+      <p>Author branding page</p>
+    </div>
+
+    <div style={{
+      background: "white",
+      color: "#111",
+      padding: 30,
+      borderRadius: 16,
+      width: 280,
+    }}>
+      <h3>Enterprise</h3>
+      <h1>$299</h1>
+      <p>Homepage banner</p>
+      <p>Press release feature</p>
+      <p>BlackBusinessReview spotlight</p>
+    </div>
+
+  </div>
+</div>
     </main>
   );
 }
