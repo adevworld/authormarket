@@ -33,7 +33,9 @@ const authorImageFile = formData.get("author_image_file") as File;
         .getPublicUrl(fileName);
 
       imageUrl = data.publicUrl;
+
       let authorImageUrl = "";
+      
 
 if (authorImageFile && authorImageFile.size > 0) {
 const authorFileName = `${Date.now()}-${authorImageFile.name}`;
