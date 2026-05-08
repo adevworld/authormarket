@@ -15,8 +15,8 @@ const formData = new FormData(form);
 const imageFile = formData.get("image_file") as File;
 const authorImageFile = formData.get("author_image_file") as File;
 
-let imageUrl = "";
-let authorImageUrl = "";
+let imageUrl: string = "";
+let authorImageUrl: string = "";
 
 // =========================
 // BOOK COVER UPLOAD
