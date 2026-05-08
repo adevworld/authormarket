@@ -9,6 +9,7 @@ export async function POST(req: Request) {
     const author = String(formData.get("author") || "");
     const summary = String(formData.get("summary") || "");
     const image_url = String(formData.get("image_url") || "");
+    const author_image_url = String(formData.get("author_image_url") || "");
     const price = Number(formData.get("price") || 9.99);
     const download_url = String(formData.get("download_url") || "");
     const featured = formData.get("featured") === "on";
@@ -21,6 +22,7 @@ export async function POST(req: Request) {
           author,
           summary,
           image_url,
+          author_image_url,
           price,
           download_url,
           featured,

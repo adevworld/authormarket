@@ -52,16 +52,20 @@ const { data: authorBooks } = await supabase
           }}
         >
           <img
-            src={authorBooks?.[0]?.author_image_url || "/founder.jpg"}
-            alt={authorName}
-            style={{
-              width: 120,
-              height: 120,
-              borderRadius: "50%",
-              objectFit: "cover",
-              border: "4px solid #facc15",
-            }}
-          />
+src={
+authorBooks?.find((b) => b.author_image_url)
+?.author_image_url || "/founder.jpg"
+}
+alt={authorName}
+style={{
+width: 120,
+height: 120,
+borderRadius: "50%",
+objectFit: "cover",
+border: "4px solid #facc15",
+}}
+/>
+
 
           <div>
             <div
@@ -109,43 +113,20 @@ const { data: authorBooks } = await supabase
               growth, leadership, and strategy.
             </p>
 
-            <div
-              style={{
-                display: "flex",
-                gap: 15,
-                marginTop: 15,
-              }}
-            >
-              <a
-                href="#"
-                style={{
-                  color: "#2563eb",
-                  textDecoration: "none",
-                }}
-              >
-                Website
-              </a>
+            <div style={{ display: "flex", gap: 12, marginTop: 10 }}>
+<a href={authorBooks?.[0]?.author_link || "#"} target="_blank">
+Website
+</a>
 
-              <a
-                href="#"
-                style={{
-                  color: "#2563eb",
-                  textDecoration: "none",
-                }}
-              >
-                LinkedIn
-              </a>
+<a href="#" target="_blank">
+LinkedIn
+</a>
 
-              <a
-                href="#"
-                style={{
-                  color: "#2563eb",
-                  textDecoration: "none",
-                }}
-              >
-                Instagram
-              </a>
-            </div>
+<a href="#" target="_blank">
+Instagram
+</a>
+</div>
+
           </div>
         </div>
 
@@ -166,44 +147,66 @@ const { data: authorBooks } = await supabase
   }}
 >
   {authorBooks?.map((book) => (
-    <Link
-      key={book.id}
-      href={`/book/${book.id}`}
-      style={{ textDecoration: "none", color: "inherit" }}
-    >
-      <div
-        style={{
-          width: 180,
-          background: "white",
-          border: "1px solid #e5e7eb",
-          borderRadius: 12,
-          padding: 14,
-          boxShadow: "0 4px 12px rgba(0,0,0,0.08)",
-        }}
-      >
-        {book.image_url && (
-          <img
-            src={book.image_url}
-            alt={book.title}
-            style={{
-              width: "100%",
-              height: 220,
-              objectFit: "contain",
-              marginBottom: 10,
-            }}
-          />
-        )}
+<div
+key={book.id}
+style={{
+width: 180,
+background: "white",
+border: "1px solid #e5e7eb",
+borderRadius: 12,
+padding: 14,
+boxShadow: "0 4px 12px rgba(0,0,0,0.08)",
+}}
+>
+<Link
+href={`/book/${book.id}`}
+style={{
+textDecoration: "none",
+color: "inherit",
+}}
+>
+{book.image_url && (
+<img
+src={book.image_url}
+alt={book.title}
+style={{
+width: "100%",
+height: 220,
+objectFit: "contain",
+marginBottom: 10,
+}}
+/>
+)}
 
-        <h3 style={{ fontSize: 15 }}>
-          {book.title}
-        </h3>
+<h3 style={{ fontSize: 15 }}>
+{book.title}
+</h3>
+</Link>
 
-        <p style={{ fontWeight: "bold" }}>
-          ${book.price || "9.99"}
-        </p>
-      </div>
-    </Link>
-  ))}
+<p style={{ fontWeight: "bold" }}>
+${book.price || "9.99"}
+</p>
+
+<a
+href={book.buy_link || "#"}
+target="_blank"
+rel="noopener noreferrer"
+style={{
+display: "block",
+marginTop: 10,
+padding: "8px 14px",
+background: "#facc15",
+color: "#111827",
+borderRadius: 8,
+textDecoration: "none",
+fontWeight: "bold",
+textAlign: "center",
+}}
+>
+Buy Now
+</a>
+</div>
+))}
 </div>
       </div>
     </main>
