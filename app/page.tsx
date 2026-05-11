@@ -124,10 +124,12 @@ lineHeight: 1.8,
 }
 
 export default async function Home() {
-  const { data: books } = await supabase
-    .from("books")
-    .select("*")
-    .order("created_at", { ascending: false });
+  const { data: books, error } = await supabase
+  .from("books")
+  .select("*");
+
+console.log("SUPABASE BOOKS:", books);
+console.log("SUPABASE ERROR:", error);
 
   const featuredBooks = books || [];
 const regularBooks = books || [];
