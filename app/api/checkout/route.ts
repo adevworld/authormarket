@@ -5,8 +5,12 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
 export async function POST(req: Request) {
 try {
-const { priceId } = await req.json();
+const body = await req.json();
 
+const priceId =
+  body.priceId ||
+  body.stripe_price_id;
+console.log("PRICE ID:", priceId);
 if (!priceId) {
 return NextResponse.json(
 { error: "Missing priceId" },
