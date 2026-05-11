@@ -129,9 +129,8 @@ export default async function Home() {
     .select("*")
     .order("created_at", { ascending: false });
 
-  const featuredBooks = books?.filter((book) => book.featured) || [];
-  const regularBooks = books?.filter((book) => !book.featured) || [];
-
+  const featuredBooks = books || [];
+const regularBooks = books || [];
   return (
     <main
       style={{
