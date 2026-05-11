@@ -42,7 +42,11 @@ function BookCard({ book }: { book: any }) {
 
       <p style={{ fontWeight: "bold" }}>${book.price || "9.99"}</p>
 
-      <BuyButton title={book.title} price={Number(book.price || 9.99)} />
+      <BuyButton
+  title={book.title}
+  price={Number(book.price || 9.99)}
+  priceId={book.stripe_price_id}
+/>
     </div>
   );
 }
