@@ -130,7 +130,7 @@ export default async function Home() {
 
 console.log("BOOKS:", books);
 console.log("ERROR:", error);
-
+const featuredBooks = books?.filter((book) => book.featured) || [];
 
   return (
     <main
