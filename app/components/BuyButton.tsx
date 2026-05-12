@@ -13,7 +13,6 @@ buyLink,
 }) {
 
   const handleCheckout = async () => {
-    alert("buyLink = " + buyLink);
     
   if (buyLink) {
   window.location.href = buyLink;
