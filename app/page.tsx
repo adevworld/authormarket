@@ -128,223 +128,224 @@ export default async function Home() {
   .from("books")
   .select("*");
 
-console.log("SUPABASE BOOKS:", books);
-console.log("SUPABASE ERROR:", error);
+console.log("BOOKS:", books);
+console.log("ERROR:", error);
 
-  const featuredBooks = books || [];
-const regularBooks = books || [];
-  return (
-    <main
-      style={{
-        maxWidth: 1100,
-        margin: "40px auto",
-        padding: 20,
-        fontFamily: "Arial",
-      }}
-    >
-     <div
-  style={{
-    background: "#0f172a",
-    color: "white",
-    padding: "14px 24px",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "space-between",
-    borderRadius: 12,
-    marginBottom: 30,
-  }}
->
-  <div
-    style={{
-      fontSize: 28,
-      fontWeight: "bold",
-      color: "#facc15",
-    }}
-  >
-    Author Market
-  </div>
+return (
+  <pre>{JSON.stringify(books, null, 2)}</pre>
+);
+//   return (
+//     <main
+//       style={{
+//         maxWidth: 1100,
+//         margin: "40px auto",
+//         padding: 20,
+//         fontFamily: "Arial",
+//       }}
+//     >
+//      <div
+//   style={{
+//     background: "#0f172a",
+//     color: "white",
+//     padding: "14px 24px",
+//     display: "flex",
+//     alignItems: "center",
+//     justifyContent: "space-between",
+//     borderRadius: 12,
+//     marginBottom: 30,
+//   }}
+// >
+//   <div
+//     style={{
+//       fontSize: 28,
+//       fontWeight: "bold",
+//       color: "#facc15",
+//     }}
+//   >
+//     Author Market
+//   </div>
 
-  <input
-    type="text"
-    placeholder="Search books, authors, topics..."
-    style={{
-      width: "50%",
-      padding: "12px 16px",
-      borderRadius: 8,
-      border: "none",
-      fontSize: 16,
-    }}
-  />
+//   <input
+//     type="text"
+//     placeholder="Search books, authors, topics..."
+//     style={{
+//       width: "50%",
+//       padding: "12px 16px",
+//       borderRadius: 8,
+//       border: "none",
+//       fontSize: 16,
+//     }}
+//   />
 
-  <div
-    style={{
-      display: "flex",
-      gap: 20,
-      fontWeight: "bold",
-      fontSize: 14,
-    }}
-  >
-    <span>Books</span>
-    <span>Authors</span>
-    <span>Promote</span>
-  </div>
-</div> 
-      <div
-        style={{
-          background: "#111827",
-          color: "white",
-          padding: 40,
-          borderRadius: 16,
-          marginBottom: 40,
-        }}
-      >
-        <h1 style={{
-  fontSize: 42,
-  lineHeight: 1.05,
-  marginBottom: 16,
-  fontWeight: "bold"
-}}>
-  Get Your Book Discovered
-</h1>
-        <p style={{
-  fontSize: 20,
-  lineHeight: 1.45,
-  color: "#e5e7eb",
-  maxWidth: 700
-}}>
-  Promote your book, build your author brand, and get featured in front of readers, entrepreneurs, and media audiences.
-</p><p style={{
-  marginTop: 18,
-  color: "#facc15",
-  fontWeight: "bold"
-}}>
-  Powered by Author Market 
-</p>
-      </div>
+//   <div
+//     style={{
+//       display: "flex",
+//       gap: 20,
+//       fontWeight: "bold",
+//       fontSize: 14,
+//     }}
+//   >
+//     <span>Books</span>
+//     <span>Authors</span>
+//     <span>Promote</span>
+//   </div>
+// </div> 
+//       <div
+//         style={{
+//           background: "#111827",
+//           color: "white",
+//           padding: 40,
+//           borderRadius: 16,
+//           marginBottom: 40,
+//         }}
+//       >
+//         <h1 style={{
+//   fontSize: 42,
+//   lineHeight: 1.05,
+//   marginBottom: 16,
+//   fontWeight: "bold"
+// }}>
+//   Get Your Book Discovered
+// </h1>
+//         <p style={{
+//   fontSize: 20,
+//   lineHeight: 1.45,
+//   color: "#e5e7eb",
+//   maxWidth: 700
+// }}>
+//   Promote your book, build your author brand, and get featured in front of readers, entrepreneurs, and media audiences.
+// </p><p style={{
+//   marginTop: 18,
+//   color: "#facc15",
+//   fontWeight: "bold"
+// }}>
+//   Powered by Author Market 
+// </p>
+//       </div>
 
-      <h2>Featured Books</h2>
+//       <h2>Featured Books</h2>
 
-      <div
-        style={{
-          display: "flex",
-          flexWrap: "wrap",
-          gap: 20,
-          marginBottom: 60,
-        }}
-      >
-        {featuredBooks.map((book) => (
-          <BookCard key={book.id} book={book} />
-        ))}
-      </div>
+//       <div
+//         style={{
+//           display: "flex",
+//           flexWrap: "wrap",
+//           gap: 20,
+//           marginBottom: 60,
+//         }}
+//       >
+//         {featuredBooks.map((book) => (
+//           <BookCard key={book.id} book={book} />
+//         ))}
+//       </div>
 
-      <h2>All Books</h2>
+//       <h2>All Books</h2>
 
-      <div
-        style={{
-          display: "flex",
-          flexWrap: "wrap",
-          gap: 20,
-          marginBottom: 80,
-        }}
-      >
-        {regularBooks.map((book) => (
-          <BookCard key={book.id} book={book} />
-        ))}
-      </div>
+//       <div
+//         style={{
+//           display: "flex",
+//           flexWrap: "wrap",
+//           gap: 20,
+//           marginBottom: 80,
+//         }}
+//       >
+//         {regularBooks.map((book) => (
+//           <BookCard key={book.id} book={book} />
+//         ))}
+//       </div>
 
-      <div
-        style={{
-          marginTop: 80,
-          padding: "40px 20px",
-          background: "#111827",
-          borderRadius: 20,
-          color: "white",
-        }}
-      >
+//       <div
+//         style={{
+//           marginTop: 80,
+//           padding: "40px 20px",
+//           background: "#111827",
+//           borderRadius: 20,
+//           color: "white",
+//         }}
+//       >
 
-               <h2
-  style={{
-    fontSize: 42,
-    fontWeight: "bold",
-    marginBottom: 10,
-    textAlign: "center",
-    color: "white",
-  }}
->
-  Promote Your Book to Thousands of Readers
-</h2>
+//                <h2
+//   style={{
+//     fontSize: 42,
+//     fontWeight: "bold",
+//     marginBottom: 10,
+//     textAlign: "center",
+//     color: "white",
+//   }}
+// >
+//   Promote Your Book to Thousands of Readers
+// </h2>
 
-<h3
-  style={{
-    textAlign: "center",
-    color: "#d1d5db",
-    marginBottom: 30,
-  }}
->
-  Author Marketing Packages
-</h3>
+// <h3
+//   style={{
+//     textAlign: "center",
+//     color: "#d1d5db",
+//     marginBottom: 30,
+//   }}
+// >
+//   Author Marketing Packages
+// </h3>
 
-        <p style={{ textAlign: "center", color: "#d1d5db", marginBottom: 40 }}>
-          Grow your brand. Sell more books. Build your audience.
-        </p>
+//         <p style={{ textAlign: "center", color: "#d1d5db", marginBottom: 40 }}>
+//           Grow your brand. Sell more books. Build your audience.
+//         </p>
 
-        <div
-          style={{
-            display: "flex",
-            gap: 20,
-            flexWrap: "wrap",
-            justifyContent: "center",
-          }}
-        >
-          <PackageCard
-  title="Launch"
-  price="$49"
-  buttonText="Get Started"
-  buttonLink="https://buy.stripe.com/4gM9AT3S7bQN44Rb50bV600"
-  features={[
-    "Author profile page",
-    "1 featured book",
-    "Social media links",
-    "Marketplace listing",
-    "Email support",
-  ]}
-/>
+//         <div
+//           style={{
+//             display: "flex",
+//             gap: 20,
+//             flexWrap: "wrap",
+//             justifyContent: "center",
+//           }}
+//         >
+//           <PackageCard
+//   title="Launch"
+//   price="$49"
+//   buttonText="Get Started"
+//   buttonLink="https://buy.stripe.com/4gM9AT3S7bQN44Rb50bV600"
+//   features={[
+//     "Author profile page",
+//     "1 featured book",
+//     "Social media links",
+//     "Marketplace listing",
+//     "Email support",
+//   ]}
+// />
 
-          <PackageCard
-  title="Authority"
-  price="$99"
-  buttonText="Get Started"
-  buttonLink="https://buy.stripe.com/9B64gz3S7aMJ7h32yubV601"
-  featured
-  features={[
-    "Featured homepage placement",
-    "Up to 6 books",
-    "Premium author branding",
-    "Featured Author badge",
-    "Priority placement",
-  ]}
-/>
+//           <PackageCard
+//   title="Authority"
+//   price="$99"
+//   buttonText="Get Started"
+//   buttonLink="https://buy.stripe.com/9B64gz3S7aMJ7h32yubV601"
+//   featured
+//   features={[
+//     "Featured homepage placement",
+//     "Up to 6 books",
+//     "Premium author branding",
+//     "Featured Author badge",
+//     "Priority placement",
+//   ]}
+// />
 
-          <PackageCard
-  title="Legacy"
-  price="$299"
-  buttonText="Get Started"
-  buttonLink="https://buy.stripe.com/6oU9ATgET5sp0SF7SObV602"
-  features={[
-    "BlackBusinessReview spotlight",
-    "Homepage banner feature",
-    "Press release article",
-    "Up to 12 books",
-    "Social media promotion",
-    "Premium media branding",
-  ]}
-/>
-        </div>
+//           <PackageCard
+//   title="Legacy"
+//   price="$299"
+//   buttonText="Get Started"
+//   buttonLink="https://buy.stripe.com/6oU9ATgET5sp0SF7SObV602"
+//   features={[
+//     "BlackBusinessReview spotlight",
+//     "Homepage banner feature",
+//     "Press release article",
+//     "Up to 12 books",
+//     "Social media promotion",
+//     "Premium media branding",
+//   ]}
+// />
+//         </div>
 
-        <p style={{ textAlign: "center", marginTop: 25, color: "#d1d5db" }}>
-          Limited featured homepage placements available each month.
-        </p>
-      </div>
-    </main>
-  );
-}
+//         <p style={{ textAlign: "center", marginTop: 25, color: "#d1d5db" }}>
+//           Limited featured homepage placements available each month.
+//         </p>
+//       </div>
+//     </main>
+//   );
+// }
