@@ -256,15 +256,16 @@ const regularBooks = books?.filter((book) => !book.featured) || [];
         ))}
       </div>
 
-      <div id="promote">
-        style={{
-          marginTop: 80,
-          padding: "40px 20px",
-          background: "#111827",
-          borderRadius: 20,
-          color: "white",
-        }}
-      >
+      <div
+  id="promote"
+  style={{
+    marginTop: 80,
+    padding: "40px 20px",
+    background: "#111827",
+    borderRadius: 20,
+    color: "white",
+  }}
+>
 
                <h2
   style={{
