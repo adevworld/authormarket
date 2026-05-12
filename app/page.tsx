@@ -186,9 +186,11 @@ const regularBooks = books?.filter((book) => !book.featured) || [];
       fontSize: 14,
     }}
   >
-    <span>Books</span>
-    <span>Authors</span>
-    <span>Promote</span>
+    <a href="/" style={{ color: "white", textDecoration: "none" }}>Books</a>
+
+<a href="#authors" style={{ color: "white", textDecoration: "none" }}>Authors</a>
+
+<a href="#promote" style={{ color: "white", textDecoration: "none" }}>Promote</a>
   </div>
 </div> 
       <div
@@ -239,7 +241,7 @@ const regularBooks = books?.filter((book) => !book.featured) || [];
         ))}
       </div>
 
-      <h2>All Books</h2>
+      <h2 id="authors">All Books</h2>
 
       <div
         style={{
@@ -254,7 +256,7 @@ const regularBooks = books?.filter((book) => !book.featured) || [];
         ))}
       </div>
 
-      <div
+      <div id="promote">
         style={{
           marginTop: 80,
           padding: "40px 20px",
