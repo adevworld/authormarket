@@ -1,16 +1,22 @@
 "use client";
 
 export default function BuyButton({
-  title,
-  price,
-  priceId,
+ title,
+price,
+priceId,
+buyLink,
 }: {
   title: string;
   price: number;
   priceId?: string;
+  buyLink?: string;
 }) {
 
   const handleCheckout = async () => {
+  if (buyLink) {
+  window.location.href = buyLink;
+  return;
+}  
     if (!priceId) {
       alert("No Stripe product connected");
       return;
