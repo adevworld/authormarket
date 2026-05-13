@@ -143,7 +143,12 @@ border: "4px solid #facc15",
         fontWeight: "bold",
         textDecoration: "none",
       }}
-    {author?.facebook && (
+    
+        >
+      Instagram
+    </a>
+  )}
+  {author?.facebook && (
   <a
     href={author.facebook}
     target="_blank"
@@ -155,11 +160,7 @@ border: "4px solid #facc15",
   >
     Facebook
   </a>
-)}  
-    >
-      Instagram
-    </a>
-  )}
+)}
 </div>
             </div>
 
