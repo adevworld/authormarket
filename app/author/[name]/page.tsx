@@ -170,19 +170,7 @@ border: "4px solid #facc15",
               growth, leadership, and strategy.
             </p>
 
-            <div style={{ display: "flex", gap: 12, marginTop: 10 }}>
-<a href={authorBooks?.[0]?.author_link || "#"} target="_blank">
-Website
-</a>
-
-<a href="#" target="_blank">
-LinkedIn
-</a>
-
-<a href="#" target="_blank">
-Instagram
-</a>
-</div>
+            
 
           </div>
         </div>
