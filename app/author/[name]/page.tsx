@@ -88,8 +88,8 @@ border: "4px solid #facc15",
 {author?.verified && (
   <span
     style={{
-      background: "#111827",
-      color: "white",
+      background: "#2563EB",
+color: "white",
       padding: "4px 10px",
       borderRadius: 20,
       fontSize: 12,
