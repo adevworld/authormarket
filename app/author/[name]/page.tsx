@@ -143,6 +143,19 @@ border: "4px solid #facc15",
         fontWeight: "bold",
         textDecoration: "none",
       }}
+    {author?.facebook && (
+  <a
+    href={author.facebook}
+    target="_blank"
+    style={{
+      color: "#1877F2",
+      fontWeight: "bold",
+      textDecoration: "none",
+    }}
+  >
+    Facebook
+  </a>
+)}  
     >
       Instagram
     </a>
