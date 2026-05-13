@@ -85,7 +85,20 @@ border: "4px solid #facc15",
               <h1 style={{ margin: 0 }}>
                 {authorName}
               </h1>
-
+{author?.verified && (
+  <span
+    style={{
+      background: "#111827",
+      color: "white",
+      padding: "4px 10px",
+      borderRadius: 20,
+      fontSize: 12,
+      fontWeight: "bold",
+    }}
+  >
+    ✓ Verified Author
+  </span>
+)}
               <span
                 style={{
                   background: "#facc15",
