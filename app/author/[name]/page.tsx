@@ -10,6 +10,12 @@ export default async function AuthorPage({
   const { name } = await params;
 
   const authorName = decodeURIComponent(name);
+
+  const { data: author } = await supabase
+  .from("authors")
+  .select("*")
+  .eq("name", authorName)
+  .single();
 const { data: authorBooks } = await supabase
   .from("books")
   .select("*")
@@ -92,6 +98,56 @@ border: "4px solid #facc15",
               >
                 Featured Author
               </span>
+              <div
+  style={{
+    display: "flex",
+    gap: 15,
+    marginTop: 15,
+    flexWrap: "wrap",
+  }}
+>
+  {author?.website && (
+    <a
+      href={author.website}
+      target="_blank"
+      style={{
+        color: "#111827",
+        fontWeight: "bold",
+        textDecoration: "none",
+      }}
+    >
+      Website
+    </a>
+  )}
+
+  {author?.linkedin && (
+    <a
+      href={author.linkedin}
+      target="_blank"
+      style={{
+        color: "#0077b5",
+        fontWeight: "bold",
+        textDecoration: "none",
+      }}
+    >
+      LinkedIn
+    </a>
+  )}
+
+  {author?.instagram && (
+    <a
+      href={author.instagram}
+      target="_blank"
+      style={{
+        color: "#E1306C",
+        fontWeight: "bold",
+        textDecoration: "none",
+      }}
+    >
+      Instagram
+    </a>
+  )}
+</div>
             </div>
 
             <p
