@@ -197,7 +197,7 @@ const regularBooks = books?.filter((book) => !book.featured);
 
 <a href="#authors" style={{ color: "white", textDecoration: "none" }}>Authors</a>
 
-<a href="#promote" style={{ color: "white", textDecoration: "none" }}>Promote</a>
+<a href="#Sell Your Book" style={{ color: "white", textDecoration: "none" }}>Sell Your Book</a>
   </div>
 </div> 
       <div
