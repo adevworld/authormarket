@@ -4,8 +4,7 @@ import Link from "next/link";
 import { supabase } from "@/app/lib/supabase";
 import BuyButton from "./components/BuyButton";
 
-export const dynamic = "force-dynamic";
-export const revalidate = 0;
+
 
 function BookCard({ book }: { book: any }) {
   return (
