@@ -255,7 +255,7 @@ const regularBooks = filteredBooks?.filter(
           marginBottom: 60,
         }}
       >
-        {featuredBooks.map((book) => (
+        {featuredBooks?.map((book) => (
           <BookCard key={book.id} book={book} />
         ))}
       </div>
@@ -270,7 +270,7 @@ const regularBooks = filteredBooks?.filter(
           marginBottom: 80,
         }}
       >
-        {regularBooks.map((book) => (
+        {regularBooks?.map((book) => (
           <BookCard key={book.id} book={book} />
         ))}
       </div>
