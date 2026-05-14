@@ -1,3 +1,5 @@
+"use client";
+import { useState } from "react";
 import Link from "next/link";
 import { supabase } from "@/app/lib/supabase";
 import BuyButton from "./components/BuyButton";
@@ -135,9 +137,21 @@ export default async function Home() {
 console.log("BOOKS:", books);
 console.log("ERROR:", error);
 
-const featuredBooks = books?.filter((book) => book.featured) || [];
-const regularBooks = books?.filter((book) => !book.featured) || [];
+const [search, setSearch] = useState("");
 
+const filteredBooks = books?.filter((book) =>
+  `${book.title} ${book.author} ${book.summary || ""}`
+    .toLowerCase()
+    .includes(search.toLowerCase())
+);
+
+const featuredBooks = filteredBooks?.filter(
+  (book) => book.featured
+);
+
+const regularBooks = filteredBooks?.filter(
+  (book) => !book.featured
+);
   return (
     <main
       style={{
@@ -170,16 +184,18 @@ const regularBooks = books?.filter((book) => !book.featured) || [];
   </div>
 
   <input
-    type="text"
-    placeholder="Search books, authors, topics..."
-    style={{
-      width: "50%",
-      padding: "12px 16px",
-      borderRadius: 8,
-      border: "none",
-      fontSize: 16,
-    }}
-  />
+  type="text"
+  placeholder="Search books, authors, topics..."
+  value={search}
+  onChange={(e) => setSearch(e.target.value)}
+  style={{
+    width: "50%",
+    padding: "12px 16px",
+    borderRadius: 8,
+    border: "none",
+    fontSize: 16,
+  }}
+/>
 
   <div
     style={{
