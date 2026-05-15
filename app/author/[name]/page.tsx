@@ -36,16 +36,20 @@ const { data: authorBooks } = await supabase
           margin: "0 auto",
         }}
       >
-        <Link
-          href="/"
-          style={{
-            color: "#2563eb",
-            textDecoration: "none",
-            fontWeight: "bold",
-          }}
-        >
-          ← Back to Home
-        </Link>
+        <div style={{ marginBottom: 20 }}>
+  <Link
+    href="/"
+    style={{
+      color: "#2563eb",
+      textDecoration: "none",
+      fontWeight: "bold",
+      display: "inline-block",
+      cursor: "pointer",
+    }}
+  >
+    ← Back to Home
+  </Link>
+</div>
 
         <div
           style={{
