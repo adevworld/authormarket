@@ -3,36 +3,7 @@
 import Link from "next/link";
 import { supabase } from "@/app/lib/supabase";
 import BuyButton from "@/app/components/BuyButton";
-function ShareButton({ book }: { book: any }) {
-  const shareUrl =
-    typeof window !== "undefined"
-      ? window.location.origin
-      : "https://www.theauthormarket.com";
-
-  return (
-    <a
-      href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
-        shareUrl
-      )}`}
-      target="_blank"
-      rel="noopener noreferrer"
-      style={{
-        padding: "10px 14px",
-        borderRadius: 10,
-        border: "1px solid #d1d5db",
-        background: "white",
-        cursor: "pointer",
-        fontWeight: 600,
-        textDecoration: "none",
-        color: "black",
-        display: "inline-block",
-      }}
-    >
-      Share
-    </a>
-  );
-}
-
+import ShareButton from "./components/ShareButton";
 
 
 function BookCard({ book }: { book: any }) {
@@ -78,8 +49,10 @@ function BookCard({ book }: { book: any }) {
       <div style={{ display: "flex", gap: 10, marginTop: 10 }}>
    
   <BuyButton buyLink={book.buy_link} />
-
-  <ShareButton book={book} />
+  <button style={{ background: "red", color: "white", padding: 10 }}>
+  DIRECT TEST BUTTON
+</button>
+  
 </div>
     </div>
   );
