@@ -4,15 +4,18 @@ import Link from "next/link";
 import { supabase } from "@/app/lib/supabase";
 import BuyButton from "./components/BuyButton";
 function ShareButton({ book }: { book: any }) {
-  return (
-    <button
-      type="button"
-      onClick={() => {
-        const shareUrl = window.location.href;
+  const shareUrl =
+    typeof window !== "undefined"
+      ? window.location.origin
+      : "https://www.theauthormarket.com";
 
-        navigator.clipboard.writeText(shareUrl);
-        alert("Book link copied!");
-      }}
+  return (
+    <a
+      href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
+        shareUrl
+      )}`}
+      target="_blank"
+      rel="noopener noreferrer"
       style={{
         padding: "10px 14px",
         borderRadius: 10,
@@ -20,10 +23,13 @@ function ShareButton({ book }: { book: any }) {
         background: "white",
         cursor: "pointer",
         fontWeight: 600,
+        textDecoration: "none",
+        color: "black",
+        display: "inline-block",
       }}
     >
       Share
-    </button>
+    </a>
   );
 }
 
