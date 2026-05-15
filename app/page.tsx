@@ -76,7 +76,13 @@ function BookCard({ book }: { book: any }) {
       <p style={{ fontWeight: "bold" }}>${book.price || "9.99"}</p>
 
       <div style={{ display: "flex", gap: 10, marginTop: 10 }}>
-  <BuyButton book={book} />
+  <BuyButton
+    title={book.title}
+    price={Number(book.price || 9.99)}
+    priceId={book.stripe_price_id}
+    buyLink={book.buy_link}
+  />
+
   <ShareButton book={book} />
 </div>
     </div>
