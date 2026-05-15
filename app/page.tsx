@@ -50,12 +50,10 @@ function BookCard({ book }: { book: any }) {
   <BuyButton buyLink={book.buy_link} />
   <ShareButton book={book} />
 </div>
-
-  
-  </div>
-    </div>
-  );
+</div>
+);
 }
+   
 
 function PackageCard({
   title,
