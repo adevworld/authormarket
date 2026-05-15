@@ -1,6 +1,7 @@
 import { supabase } from "@/app/lib/supabase";
 import Link from "next/link";
 import BuyButton from "@/app/components/BuyButton";
+import ShareButton from "../../components/ShareButton";
 
 export default async function AuthorPage({
   params,
@@ -260,6 +261,7 @@ ${book.price || "9.99"}
 </p>
 
 <BuyButton buyLink={book.buy_link} />
+<ShareButton book={book} />
 </div>
 ))}
 </div>
