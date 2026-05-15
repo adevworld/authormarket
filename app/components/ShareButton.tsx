@@ -1,33 +1,43 @@
 "use client";
 
-export default function ShareButton({ book }: any) {
+export default function ShareButton({ book }: { book: any }) {
   const shareUrl =
     typeof window !== "undefined"
       ? `${window.location.origin}/book/${book.id}`
-      : "";
+      : "https://www.theauthormarket.com";
 
-  const shareText = `Check out "${book.title}" on The Author Market: ${shareUrl}`;
+  const shareText = `Check out "${book.title}" on The Author Market`;
 
   const handleShare = async () => {
     if (navigator.share) {
       await navigator.share({
         title: book.title,
-        text: `Check out "${book.title}" on The Author Market`,
+        text: shareText,
         url: shareUrl,
       });
     } else {
       window.location.href = `mailto:?subject=${encodeURIComponent(
         book.title
-      )}&body=${encodeURIComponent(shareText)}`;
+      )}&body=${encodeURIComponent(`${shareText}\n\n${shareUrl}`)}`;
     }
   };
 
   return (
     <button
       onClick={handleShare}
-      className="mt-3 w-full rounded-xl border border-gray-300 bg-white px-4 py-2 text-sm font-semibold text-gray-800 shadow-sm hover:bg-gray-100"
+      style={{
+        padding: "8px 12px",
+        borderRadius: 8,
+        border: "1px solid #d1d5db",
+        background: "#f9fafb",
+        cursor: "pointer",
+        fontWeight: 600,
+        fontSize: 13,
+        color: "#374151",
+        width: "100%",
+      }}
     >
-      Share Book
+      Share
     </button>
   );
 }
