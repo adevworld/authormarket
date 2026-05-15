@@ -8,10 +8,15 @@ export default function ShareButton({ book }: { book: any }) {
 
   const message = `Check out "${book.title}" on The Author Market: ${shareUrl}`;
 
+  const copyLink = async () => {
+    await navigator.clipboard.writeText(message);
+    alert("Book link copied. You can paste it in text, email, or social media.");
+  };
+
   return (
     <div style={{ display: "flex", gap: 6, marginTop: 8 }}>
-      <a
-        href={`sms:?&body=${encodeURIComponent(message)}`}
+      <button
+        onClick={copyLink}
         style={{
           flex: 1,
           textAlign: "center",
@@ -22,11 +27,11 @@ export default function ShareButton({ book }: { book: any }) {
           color: "#374151",
           fontSize: 12,
           fontWeight: 600,
-          textDecoration: "none",
+          cursor: "pointer",
         }}
       >
-        Text
-      </a>
+        Copy Link
+      </button>
 
       <a
         href={`mailto:?subject=${encodeURIComponent(book.title)}&body=${encodeURIComponent(message)}`}
