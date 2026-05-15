@@ -7,7 +7,7 @@ function ShareButton({ book }: { book: any }) {
   return (
     <button
       onClick={() => {
-        const shareUrl = `${window.location.origin}/book/${book.id}`;
+        const shareUrl = window.location.origin;
 
         if (navigator.share) {
           navigator.share({
