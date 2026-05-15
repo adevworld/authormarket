@@ -7,28 +7,36 @@ export default function ShareButton({ book }: { book: any }) {
       : "https://www.theauthormarket.com";
 
   const copyLink = async () => {
-    await navigator.clipboard.writeText(shareUrl);
-    alert("Book link copied!");
+    try {
+      await navigator.clipboard.writeText(shareUrl);
+      alert("Book link copied!");
+    } catch {
+      window.prompt("Copy this book link:", shareUrl);
+    }
   };
 
   return (
-  <button
-    onClick={copyLink}
-    style={{
-      padding: "10px 14px",
-      borderRadius: 10,
-      border: "1px solid #d1d5db",
-      background: "#ffffff",
-      cursor: "pointer",
-      fontWeight: 700,
-      fontSize: 13,
-      color: "#374151",
-      minWidth: 90,
-      height: 44,
-      boxShadow: "0 1px 3px rgba(0,0,0,0.08)",
-    }}
-  >
-    🔗 Copy Link
-  </button>
-);
+    <button
+      type="button"
+      onClick={copyLink}
+      style={{
+        width: "78px",
+        height: "44px",
+        borderRadius: 8,
+        border: "1px solid #d1d5db",
+        background: "#ffffff",
+        cursor: "pointer",
+        fontWeight: 600,
+        fontSize: 12,
+        color: "#374151",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        lineHeight: 1.1,
+        textAlign: "center",
+      }}
+    >
+      Copy Link
+    </button>
+  );
 }
