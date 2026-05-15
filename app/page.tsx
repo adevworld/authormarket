@@ -48,7 +48,29 @@ function BookCard({ book }: { book: any }) {
 
       <div style={{ display: "flex", gap: 10, marginTop: 10 }}>
      <BuyButton buyLink={book.buy_link} />
-  <ShareButton book={book} />
+  <button
+  type="button"
+  onClick={(e) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    const url = `${window.location.origin}/author/${encodeURIComponent(book.author)}`;
+    alert(url);
+  }}
+  style={{
+    background: "#facc15",
+    color: "#111827",
+    border: "none",
+    borderRadius: 8,
+    width: 82,
+    height: 42,
+    fontWeight: 700,
+    fontSize: 13,
+    cursor: "pointer",
+  }}
+>
+  Share
+</button>
   </div>
     </div>
   );
