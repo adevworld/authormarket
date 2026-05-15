@@ -47,30 +47,11 @@ function BookCard({ book }: { book: any }) {
       <p style={{ fontWeight: "bold" }}>${book.price || "9.99"}</p>
 
       <div style={{ display: "flex", gap: 10, marginTop: 10 }}>
-     <BuyButton buyLink={book.buy_link} />
-  <button
-  type="button"
-  onClick={(e) => {
-    e.preventDefault();
-    e.stopPropagation();
+  <BuyButton buyLink={book.buy_link} />
+  <ShareButton book={book} />
+</div>
 
-    const url = `${window.location.origin}/author/${encodeURIComponent(book.author)}`;
-    alert(url);
-  }}
-  style={{
-    background: "#facc15",
-    color: "#111827",
-    border: "none",
-    borderRadius: 8,
-    width: 82,
-    height: 42,
-    fontWeight: 700,
-    fontSize: 13,
-    cursor: "pointer",
-  }}
->
-  Share
-</button>
+  
   </div>
     </div>
   );
