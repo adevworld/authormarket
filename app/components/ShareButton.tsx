@@ -1,17 +1,23 @@
 "use client";
 
 export default function ShareButton({ book }: { book: any }) {
-  const shareUrl =
-    typeof window !== "undefined"
-      ? `${window.location.origin}/book/${book.id}`
-      : "https://www.theauthormarket.com";
+  const getBookUrl = () => {
+    const baseUrl =
+      typeof window !== "undefined"
+        ? window.location.origin
+        : "https://www.theauthormarket.com";
+
+    return `${baseUrl}/book/${book.id}`;
+  };
 
   const copyLink = async () => {
+    const url = getBookUrl();
+
     try {
-      await navigator.clipboard.writeText(shareUrl);
+      await navigator.clipboard.writeText(url);
       alert("Book link copied!");
     } catch {
-      window.prompt("Copy this book link:", shareUrl);
+      prompt("Copy this book link:", url);
     }
   };
 
@@ -20,21 +26,21 @@ export default function ShareButton({ book }: { book: any }) {
       type="button"
       onClick={copyLink}
       style={{
-  background: "#facc15",
-  color: "#111827",
-  border: "none",
-  borderRadius: 8,
-  padding: "8px 12px",
-  fontWeight: 700,
-  fontSize: 12,
-  cursor: "pointer",
-  minWidth: 78,
-  height: 44,
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  boxShadow: "0 1px 2px rgba(0,0,0,0.08)",
-}}
+        background: "#facc15",
+        color: "#111827",
+        border: "none",
+        borderRadius: 8,
+        width: 82,
+        height: 42,
+        fontWeight: 700,
+        fontSize: 13,
+        cursor: "pointer",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        textAlign: "center",
+        boxShadow: "0 1px 2px rgba(0,0,0,0.08)",
+      }}
     >
       Share
     </button>
