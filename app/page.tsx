@@ -2,6 +2,36 @@
 import Link from "next/link";
 import { supabase } from "@/app/lib/supabase";
 import BuyButton from "./components/BuyButton";
+function ShareButton({ book }: { book: any }) {
+  return (
+    <button
+      onClick={() => {
+        const shareUrl = `${window.location.origin}/book/${book.id}`;
+
+        if (navigator.share) {
+          navigator.share({
+            title: book.title,
+            text: `Check out this book: ${book.title}`,
+            url: shareUrl,
+          });
+        } else {
+          navigator.clipboard.writeText(shareUrl);
+          alert("Book link copied!");
+        }
+      }}
+      style={{
+        padding: "10px 14px",
+        borderRadius: 10,
+        border: "1px solid #d1d5db",
+        background: "white",
+        cursor: "pointer",
+        fontWeight: 600,
+      }}
+    >
+      Share
+    </button>
+  );
+}
 
 
 
@@ -45,12 +75,10 @@ function BookCard({ book }: { book: any }) {
 
       <p style={{ fontWeight: "bold" }}>${book.price || "9.99"}</p>
 
-      <BuyButton
-  title={book.title}
-  price={Number(book.price || 9.99)}
-  priceId={book.stripe_price_id}
-  buyLink={book.buy_link}
-/>
+      <div style={{ display: "flex", gap: 10, marginTop: 10 }}>
+  <BuyButton book={book} />
+  <ShareButton book={book} />
+</div>
     </div>
   );
 }
