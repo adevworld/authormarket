@@ -6,38 +6,45 @@ export default function ShareButton({ book }: { book: any }) {
       ? `${window.location.origin}/book/${book.id}`
       : "https://www.theauthormarket.com";
 
-  const shareText = `Check out "${book.title}" on The Author Market`;
-
-  const handleShare = async () => {
-    if (navigator.share) {
-      await navigator.share({
-        title: book.title,
-        text: shareText,
-        url: shareUrl,
-      });
-    } else {
-      window.location.href = `mailto:?subject=${encodeURIComponent(
-        book.title
-      )}&body=${encodeURIComponent(`${shareText}\n\n${shareUrl}`)}`;
-    }
-  };
+  const message = `Check out "${book.title}" on The Author Market: ${shareUrl}`;
 
   return (
-    <button
-      onClick={handleShare}
-      style={{
-        padding: "8px 12px",
-        borderRadius: 8,
-        border: "1px solid #d1d5db",
-        background: "#f9fafb",
-        cursor: "pointer",
-        fontWeight: 600,
-        fontSize: 13,
-        color: "#374151",
-        width: "100%",
-      }}
-    >
-      Share
-    </button>
+    <div style={{ display: "flex", gap: 6, marginTop: 8 }}>
+      <a
+        href={`sms:?&body=${encodeURIComponent(message)}`}
+        style={{
+          flex: 1,
+          textAlign: "center",
+          padding: "7px 8px",
+          borderRadius: 8,
+          border: "1px solid #d1d5db",
+          background: "#f9fafb",
+          color: "#374151",
+          fontSize: 12,
+          fontWeight: 600,
+          textDecoration: "none",
+        }}
+      >
+        Text
+      </a>
+
+      <a
+        href={`mailto:?subject=${encodeURIComponent(book.title)}&body=${encodeURIComponent(message)}`}
+        style={{
+          flex: 1,
+          textAlign: "center",
+          padding: "7px 8px",
+          borderRadius: 8,
+          border: "1px solid #d1d5db",
+          background: "#f9fafb",
+          color: "#374151",
+          fontSize: 12,
+          fontWeight: 600,
+          textDecoration: "none",
+        }}
+      >
+        Email
+      </a>
+    </div>
   );
 }
