@@ -20,23 +20,23 @@ export default function ShareButton({ book }: { book: any }) {
       type="button"
       onClick={copyLink}
       style={{
-        width: "78px",
-        height: "44px",
-        borderRadius: 8,
-        border: "1px solid #d1d5db",
-        background: "#ffffff",
-        cursor: "pointer",
-        fontWeight: 600,
-        fontSize: 12,
-        color: "#374151",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        lineHeight: 1.1,
-        textAlign: "center",
-      }}
+  background: "#facc15",
+  color: "#111827",
+  border: "none",
+  borderRadius: 8,
+  padding: "8px 12px",
+  fontWeight: 700,
+  fontSize: 12,
+  cursor: "pointer",
+  minWidth: 78,
+  height: 44,
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  boxShadow: "0 1px 2px rgba(0,0,0,0.08)",
+}}
     >
-      Copy Link
+      Share
     </button>
   );
 }
