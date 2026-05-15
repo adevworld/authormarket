@@ -30,7 +30,7 @@ export default function ShareButton({ book }: { book: any }) {
           cursor: "pointer",
         }}
       >
-        Copy Link TEST 123
+        THIS IS THE NEW SHARE BUTTON
       </button>
 
       <a
