@@ -49,9 +49,7 @@ function BookCard({ book }: { book: any }) {
       <div style={{ display: "flex", gap: 10, marginTop: 10 }}>
    
   <BuyButton buyLink={book.buy_link} />
-  <button style={{ background: "red", color: "white", padding: 10 }}>
-  DIRECT TEST BUTTON
-</button>
+  <ShareButton book={book} />
   
 </div>
     </div>
