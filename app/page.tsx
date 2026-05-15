@@ -6,19 +6,12 @@ import BuyButton from "./components/BuyButton";
 function ShareButton({ book }: { book: any }) {
   return (
     <button
+      type="button"
       onClick={() => {
-        const shareUrl = window.location.origin;
+        const shareUrl = window.location.href;
 
-        if (navigator.share) {
-          navigator.share({
-            title: book.title,
-            text: `Check out this book: ${book.title}`,
-            url: shareUrl,
-          });
-        } else {
-          navigator.clipboard.writeText(shareUrl);
-          alert("Book link copied!");
-        }
+        navigator.clipboard.writeText(shareUrl);
+        alert("Book link copied!");
       }}
       style={{
         padding: "10px 14px",
