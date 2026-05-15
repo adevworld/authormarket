@@ -8,7 +8,7 @@ export default function BuyButton({
 
   const handleCheckout = async () => {
   if (buyLink) {
-    window.open(buyLink, "_blank");
+    window.location.href = buyLink;
     return;
   }
 
