@@ -1,36 +1,17 @@
 "use client";
 
 export default function ShareButton({ book }: { book: any }) {
-  const handleShare = async (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    e.stopPropagation();
-
-    const baseUrl = window.location.origin;
-    const author = book.author || "";
-    const url = `${baseUrl}/author/${encodeURIComponent(author)}`;
-    const text = `Check out "${book.title}" on The Author Market`;
-
-    try {
-      if (navigator.share) {
-        await navigator.share({
-          title: book.title,
-          text,
-          url,
-        });
-        return;
-      }
-
-      await navigator.clipboard.writeText(url);
-      alert("Book link copied!");
-    } catch {
-      window.prompt("Copy this book link:", url);
-    }
-  };
+  const author = book.author || "";
+  const url =
+    typeof window !== "undefined"
+      ? `${window.location.origin}/author/${encodeURIComponent(author)}`
+      : `https://www.theauthormarket.com/author/${encodeURIComponent(author)}`;
 
   return (
-    <button
-      type="button"
-      onClick={handleShare}
+    <a
+      href={url}
+      target="_blank"
+      rel="noopener noreferrer"
       style={{
         background: "#facc15",
         color: "#111827",
@@ -41,9 +22,13 @@ export default function ShareButton({ book }: { book: any }) {
         fontWeight: 700,
         fontSize: 13,
         cursor: "pointer",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        textDecoration: "none",
       }}
     >
       Share
-    </button>
+    </a>
   );
 }
