@@ -259,12 +259,7 @@ marginBottom: 10,
 ${book.price || "9.99"}
 </p>
 
-<BuyButton
-  title={book.title}
-  price={Number(book.price || 9.99)}
-  priceId={book.stripe_price_id}
-  buyLink={book.buy_link}
-/>
+<BuyButton buyLink={book.buy_link} />
 </div>
 ))}
 </div>
