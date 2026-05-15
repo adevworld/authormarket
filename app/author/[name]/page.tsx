@@ -37,7 +37,7 @@ const { data: authorBooks } = await supabase
         }}
       >
         <div style={{ marginBottom: 20 }}>
-  <Link
+  <a
     href="/"
     style={{
       color: "#2563eb",
@@ -48,7 +48,7 @@ const { data: authorBooks } = await supabase
     }}
   >
     ← Back to Home
-  </Link>
+  </a>
 </div>
 
         <div
