@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { supabase } from "@/app/lib/supabase";
-import BuyButton from "./components/BuyButton";
+import BuyButton from "@/app/components/BuyButton";
 function ShareButton({ book }: { book: any }) {
   const shareUrl =
     typeof window !== "undefined"
@@ -76,12 +76,7 @@ function BookCard({ book }: { book: any }) {
       <p style={{ fontWeight: "bold" }}>${book.price || "9.99"}</p>
 
       <div style={{ display: "flex", gap: 10, marginTop: 10 }}>
-  <BuyButton
-    title={book.title}
-    price={Number(book.price || 9.99)}
-    priceId={book.stripe_price_id}
-    buyLink={book.buy_link}
-  />
+  <BuyButton buyLink={book.buy_link} />
 
   <ShareButton book={book} />
 </div>

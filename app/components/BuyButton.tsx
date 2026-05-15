@@ -1,14 +1,8 @@
 "use client";
 
 export default function BuyButton({
- title,
-price,
-priceId,
-buyLink,
+  buyLink,
 }: {
-  title: string;
-  price: number;
-  priceId?: string;
   buyLink?: string;
 }) {
 
