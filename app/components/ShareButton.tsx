@@ -1,9 +1,13 @@
 "use client";
 
 export default function ShareButton({ book }: { book: any }) {
-  const shareBook = () => {
+  const shareBook = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
+
     const baseUrl = window.location.origin;
-    const url = `${baseUrl}/author/${encodeURIComponent(book.author)}`;
+    const authorName = book.author || book.author_name || book.name || "";
+    const url = `${baseUrl}/author/${encodeURIComponent(authorName)}`;
 
     window.prompt("Copy this link and send it by text or email:", url);
   };
