@@ -1,21 +1,36 @@
 "use client";
 
 export default function ShareButton({ book }: { book: any }) {
-  const shareBook = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleShare = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     e.stopPropagation();
 
     const baseUrl = window.location.origin;
-    const authorName = book.author || book.author_name || book.name || "";
-    const url = `${baseUrl}/author/${encodeURIComponent(authorName)}`;
+    const author = book.author || "";
+    const url = `${baseUrl}/author/${encodeURIComponent(author)}`;
+    const text = `Check out "${book.title}" on The Author Market`;
 
-    window.prompt("Copy this link and send it by text or email:", url);
+    try {
+      if (navigator.share) {
+        await navigator.share({
+          title: book.title,
+          text,
+          url,
+        });
+        return;
+      }
+
+      await navigator.clipboard.writeText(url);
+      alert("Book link copied!");
+    } catch {
+      window.prompt("Copy this book link:", url);
+    }
   };
 
   return (
     <button
       type="button"
-      onClick={shareBook}
+      onClick={handleShare}
       style={{
         background: "#facc15",
         color: "#111827",
