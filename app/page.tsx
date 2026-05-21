@@ -92,8 +92,25 @@ lineHeight: 1.8,
           <p style={{ fontWeight: "bold", marginBottom: 10 }}>MOST POPULAR</p>
         )}
 
-        <h3>{title}</h3>
-        <h1>{price}</h1>
+        <h3
+  style={{
+    fontWeight: 700,
+    fontSize: 20,
+    marginBottom: 6,
+  }}
+>
+  {title}
+</h3>
+
+<p
+  style={{
+    fontWeight: 700,
+    fontSize: 18,
+    marginBottom: 14,
+  }}
+>
+  {price}
+</p>
 
         {features.map((feature) => (
           <p key={feature}>{feature}</p>
