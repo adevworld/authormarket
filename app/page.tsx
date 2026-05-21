@@ -311,16 +311,18 @@ const regularBooks = books?.filter((book) => !book.featured);
           }}
         >
           <PackageCard
-  title="Launch"
-  price="$49"
-  buttonText="Get Started"
-  buttonLink="https://buy.stripe.com/4gM9AT3S7bQN44Rb50bV600"
+  title="Launch Your Author Page"
+  price="$24 Limited-Time"
+  buttonText="Claim Your Spot"
+  buttonLink="https://buy.stripe.com/14AaEX3S73kh58VgpkbV60j"
   features={[
-    "Author profile page",
-    "1 featured book",
-    "Social media links",
-    "Marketplace listing",
-    "Email support",
+    "Regularly $49",
+    "Dedicated author page",
+    "1–3 book listings",
+    "Buy buttons",
+    "Author bio",
+    "Marketplace search visibility",
+    "Mobile-friendly profile",
   ]}
 />
 
